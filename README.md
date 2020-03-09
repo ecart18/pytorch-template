@@ -2,4 +2,4 @@
 
 By [Tao Hu](https://ecart18.github.io/)
 
-The code for the implementation of deep learing project template for pytorch. 
+The code is the template implementation of a deep learing project based on pytorch. 
