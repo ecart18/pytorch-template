@@ -1,0 +1,50 @@
+META_ARC: "Template"
+
+BACKBONE:
+    Name: "resnet50"
+    Backbone_cfgs:
+        pretrained: True
+        need_grad: True
+
+
+TRAIN:
+    Seed: 1
+    Resume: ""
+    Start_save_epoch: 0
+    Epochs: 50
+    Warmup: True
+    GRAD:
+        Grad_clip: True
+        Max_grad: 10000.0
+    OPT:
+        TYPE: "ADAM"
+        ADAM:
+            weight_decay: 0.005
+        SGD:
+            lr: 0.00001
+            momentum: 0.9
+            weight_decay: 0.005
+            nesterov: False
+    LR:
+        POLICY: "exponential"
+        KWARGS:
+            start_lr: 0.0001
+            end_lr: 0.00001
+    LR_WARMUP:
+        POLICY: "step"
+        EPOCH: 5
+        KWARGS:
+            start_lr: 0.00001
+            end_lr: 0.0001
+            step: 1
+
+
+DATALOADER:
+    Dataloader_cfg:
+        batch_size: 8
+        num_workers: 16
+        gpu_num: 2
+    
+
+IO:
+    LOG_DIR: "/job_data"
